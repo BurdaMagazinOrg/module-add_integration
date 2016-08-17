@@ -27,7 +27,9 @@ function ad_integration_theme() {
       'template' => 'ad-slot-fia',
       'variables' => array(
         'javascript' => NULL,
-        'html_id' => NULL
+        'html_id' => NULL,
+        'referrer' => NULL,
+        'adhelper' => NULL
       )
     )
   );
@@ -112,9 +114,17 @@ function ad_integration_preprocess_node(&$variables) {
   $view_mode = $variables['view_mode'] = $variables['elements']['#view_mode'];
   if ($view_mode=='fb_instant_articles_rss') {
 
+    $advertisingService = \Drupal::service('ad_integration');
+
+    $page_placeholder = array();
+    _attach_orbyd($page_placeholder, $advertisingService);
+
     $variables['content']['extra_html'] = array(
       '#theme' => 'ad_slot_fia',
       '#weight' => -10,
+      '#adhelper' => $GLOBALS['base_url'] . '/' . drupal_get_path('module', 'ad_integration') . '/js/adHelper.js',
+      '#referrer' => 'instyle.de',
+      '#javascript' => $page_placeholder['#attached']['html_head'][0][0]['#value']
     );
   }
 }
