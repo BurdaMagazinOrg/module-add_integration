@@ -1,7 +1,12 @@
 <figure class="op-ad">
     <iframe width="350" height="250">
-        <script src="{{ adhelper }}"></script>
         <script type="text/javascript">
+            function deviceIsMobile() {
+                return true;
+            }
+            function getDeviceType() {
+                return "smartphone"
+            }
             {{ javascript | raw }}
             var aplus_data = "adunit1="+ adunit1 + "&adunit2=" + adunit2 + "&adunit3=" + adunit3 + "&keyword=" + adkeyword;
             var aplus_referrer = {{ referrer }};

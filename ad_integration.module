@@ -28,8 +28,7 @@ function ad_integration_theme() {
       'variables' => array(
         'javascript' => NULL,
         'html_id' => NULL,
-        'referrer' => NULL,
-        'adhelper' => NULL
+        'referrer' => NULL
       )
     )
   );
@@ -116,7 +115,6 @@ function ad_integration_preprocess_views_view_row_fia(&$variables) {
   $adRender = array(
     '#theme' => 'ad_slot_fia',
     '#weight' => -10,
-    '#adhelper' => $GLOBALS['base_url'] . '/' . drupal_get_path('module', 'ad_integration') . '/js/adHelper.js',
     '#referrer' => 'instyle.de',
     '#javascript' => $page_placeholder['#attached']['html_head'][0][0]['#value']
   );
