@@ -122,6 +122,7 @@ function ad_integration_preprocess_views_view_row_fia(&$variables) {
 
   $page_placeholder = array();
   if ($ad_provider == 'orbyd') {
+    _attach_orbyd($page_placeholder, $advertisingService);
     $adRender = array(
       '#theme' => 'ad_slot_fia',
       '#weight' => -10,
