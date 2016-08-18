@@ -106,20 +106,26 @@ function ad_integration_page_attachments(array &$page) {
   }
 }
 
+/**
+ * Adds the ad template for Facebook Instant Articles
+ *
+ * Implements hook_preprocess_views_view_row_fia().
+ */
 function ad_integration_preprocess_views_view_row_fia(&$variables) {
   $advertisingService = \Drupal::service('ad_integration');
+  $ad_provider = $advertisingService->getAdProvider();
 
   $page_placeholder = array();
-  _attach_orbyd($page_placeholder, $advertisingService);
-
-  $adRender = array(
-    '#theme' => 'ad_slot_fia',
-    '#weight' => -10,
-    '#referrer' => 'instyle.de',
-    '#javascript' => $page_placeholder['#attached']['html_head'][0][0]['#value']
-  );
-  $adHtml = render($adRender);
-  $variables['options']['ad'] = $adHtml;
+  if ($ad_provider == 'orbyd') {
+    $adRender = array(
+      '#theme' => 'ad_slot_fia',
+      '#weight' => -10,
+      '#referrer' => $GLOBALS['base_url'],
+      '#javascript' => $page_placeholder['#attached']['html_head'][0][0]['#value']
+    );
+    $adHtml = render($adRender);
+    $variables['options']['ad'] = $adHtml;
+  }
 }
 
 /**
