@@ -119,15 +119,16 @@ function ad_integration_preprocess_views_view_row_fia(&$variables) {
   $ad_provider = $advertisingService->getAdProvider();
 
   $config = Drupal::config('ad_integration.settings');
+  $ad_tag = $config->get('adsc_fia_tag');
 
   $page_placeholder = array();
-  if ($ad_provider == 'orbyd') {
+  if ($ad_provider == 'orbyd' && !empty($ad_tag)) {
     _attach_orbyd($page_placeholder, $advertisingService);
     $adRender = array(
       '#theme' => 'ad_slot_fia',
       '#weight' => -10,
       '#referrer' => $GLOBALS['base_url'],
-      '#ad_tag' => $config->get('adsc_fia_tag'),
+      '#ad_tag' => $ad_tag,
       '#javascript' => $page_placeholder['#attached']['html_head'][0][0]['#value'],
     );
     $adHtml = render($adRender);
