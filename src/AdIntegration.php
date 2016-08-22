@@ -48,36 +48,36 @@ class AdIntegration implements AdIntegrationInterface {
   /**
    * {@inheritdoc}
    */
-  public function getAdUnit1() {
-    return $this->token->replace('[advertising:adsc_unit1]', array(), array('sanitize' => FALSE));
+  public function getAdUnit1($data = array()) {
+    return $this->token->replace('[advertising:adsc_unit1]', $data, array('sanitize' => FALSE));
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getAdUnit2() {
-    return $this->token->replace('[advertising:adsc_unit2]', array(), array('sanitize' => FALSE));
+  public function getAdUnit2($data = array()) {
+    return $this->token->replace('[advertising:adsc_unit2]', $data, array('sanitize' => FALSE));
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getAdUnit3() {
-    return $this->token->replace('[advertising:adsc_unit3]', array(), array('sanitize' => FALSE));
+  public function getAdUnit3($data = array()) {
+    return $this->token->replace('[advertising:adsc_unit3]', $data, array('sanitize' => FALSE));
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getKeyword() {
-    return $this->token->replace('[advertising:adsc_keyword]', array(), array('sanitize' => FALSE));
+  public function getKeyword($data = array()) {
+    return $this->token->replace('[advertising:adsc_keyword]', $data, array('sanitize' => FALSE));
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getAdMode() {
-    return $this->token->replace('[advertising:adsc_mode]', array(), array('sanitize' => FALSE));
+  public function getAdMode($data = array()) {
+    return $this->token->replace('[advertising:adsc_mode]', $data, array('sanitize' => FALSE));
   }
 
   /**
