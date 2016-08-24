@@ -31,7 +31,9 @@ class AdIntegrationTest extends KernelTestBase {
     createNode as drupalCreateNode;
   }
 
-  public static $modules = ['ad_integration', 'filter', 'user', 'system', 'field', 'node', 'text', 'taxonomy'];
+  public static $modules = [
+    'ad_integration', 'filter', 'user', 'system', 'field', 'node', 'text', 'taxonomy',
+  ];
 
   private $configs = [
     'adsc_unit1' => 'adscunit1',
@@ -91,6 +93,9 @@ class AdIntegrationTest extends KernelTestBase {
     $this->executeTestsForAllProperties(NULL, '_default', 'Default config');
   }
 
+  /**
+   * Tests the default config with a route.
+   */
   public function testDefaultsWithRoute() {
     $this->addAdvertisingFieldToNode();
 
@@ -105,6 +110,8 @@ class AdIntegrationTest extends KernelTestBase {
   }
 
   /**
+   * Test by node overridden config with route.
+   *
    * Tests if correct ad properties are returned from
    * AdIntegrationLookup service, overridden by node and using a route.
    */
@@ -126,6 +133,9 @@ class AdIntegrationTest extends KernelTestBase {
     }
   }
 
+  /**
+   * Test by term overridden config with a route.
+   */
   public function testOverrideByTermWithRoute() {
     $this->addAdvertisingFieldToNode();
 
@@ -214,7 +224,7 @@ class AdIntegrationTest extends KernelTestBase {
       ->getMock();
     $routeMatchMock->expects($this->any())
       ->method('getParameter')
-//      ->with('node')
+      /*->with('node')*/
       ->will($this->returnValueMap(array(
         array('node', $node->id()),
       )));
@@ -249,7 +259,7 @@ class AdIntegrationTest extends KernelTestBase {
     ));
 
     /** @var FieldItemListInterface $field_ad */
-//    $field_ad =  $node->get('field_advertising');
+    /*$field_ad =  $node->get('field_advertising');*/
 
     $this->executeTestsForAllProperties($node, '_override', 'Overridden by node');
   }
@@ -390,7 +400,7 @@ class AdIntegrationTest extends KernelTestBase {
    * @param string $fieldType
    *   The type of field.
    * @param array $settings
-   *   optional field type specific settings.
+   *   Optional field type specific settings.
    */
   protected function addField($field_name, $entityType, $bundle, $fieldType, $settings = array()) {
     $field_storage = FieldStorageConfig::create(array(
