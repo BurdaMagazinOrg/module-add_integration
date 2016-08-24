@@ -85,10 +85,23 @@ class AdIntegrationTest extends KernelTestBase {
   }
 
   /**
-   * Tests default configs looked up via route.
+   * Tests default configs.
    */
+  public function testDefaults() {
+    $this->executeTestsForAllProperties(NULL, '_default', 'Default config');
+  }
+
   public function testDefaultsWithRoute() {
-    $this->executeTestsForAllProperties(NULL, '_default', 'Routedefault');
+    $this->addAdvertisingFieldToNode();
+
+    $node = $this->drupalCreateNode();
+
+    $adIntegrationLookup = $this->getAdIntegrationLookupServiceForNode($node);
+
+    foreach ($this->configs as $property => $orignalValue) {
+      $value = $adIntegrationLookup->byCurrentRoute($property);
+      self::assertEquals($orignalValue . '_default', $value, 'Default with Route: value for' . $property . 'found');
+    }
   }
 
   /**
@@ -201,8 +214,10 @@ class AdIntegrationTest extends KernelTestBase {
       ->getMock();
     $routeMatchMock->expects($this->any())
       ->method('getParameter')
-      ->with('node')
-      ->will($this->returnValue($node->id()));
+//      ->with('node')
+      ->will($this->returnValueMap(array(
+        array('node', $node->id()),
+      )));
     $configFactory = \Drupal::service('config.factory');
     $entityTypeManager = \Drupal::service('entity_type.manager');
     /** @var AdIntegrationLookupInterface $adIntegrationLookup */
@@ -213,13 +228,10 @@ class AdIntegrationTest extends KernelTestBase {
    * Tests if correct ad properties are returned from default config.
    */
   public function testDefaultsWithEntity() {
-    /** @var AdIntegrationInterface $adIntegration */
-    $adIntegration = \Drupal::service('ad_integration');
-
     /** @var Node $node */
     $node = $this->drupalCreateNode();
 
-    $this->executeTestsForAllProperties($node, '_default', 'Default config');
+    $this->executeTestsForAllProperties($node, '_default', 'Default config with entity');
 
   }
 
