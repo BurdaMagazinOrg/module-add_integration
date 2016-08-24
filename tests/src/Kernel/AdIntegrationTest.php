@@ -9,9 +9,6 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\Core\Routing\RouteBuilder;
-use Drupal\Core\Routing\RouteMatch;
-use Drupal\Core\Routing\RouteProvider;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
@@ -20,9 +17,7 @@ use Drupal\simpletest\NodeCreationTrait;
 use Drupal\node\Entity\NodeType;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
-use PHPUnit_Framework_MockObject_MockBuilder;
 use PHPUnit_Framework_MockObject_MockObject;
-use Symfony\Component\Routing\Route;
 
 /**
  * Class AdIntegrationTest.
