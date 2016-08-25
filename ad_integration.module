@@ -146,7 +146,7 @@ function ad_integration_preprocess_views_view_row_fia(&$variables) {
       );
     }
     $adHtml = render($adRender);
-    $variables['options']['ad'] = $adHtml;
+    $variables['options']['automatic_ad'] = $adHtml;
   }
 }
 
