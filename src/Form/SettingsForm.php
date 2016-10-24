@@ -10,7 +10,7 @@ use Drupal\Component\Utility\Tags;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a form that configures ivw settings.
+ * Defines a form that configures ad settings.
  */
 class SettingsForm extends ConfigFormBase {
   /**
