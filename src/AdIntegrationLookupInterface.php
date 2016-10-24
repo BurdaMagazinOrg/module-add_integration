@@ -68,4 +68,5 @@ interface AdIntegrationLookupInterface {
    *   The property value.
    */
   public function byTerm($name, TermInterface $term);
+
 }
