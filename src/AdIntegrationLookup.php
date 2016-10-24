@@ -18,7 +18,7 @@ use Drupal\taxonomy\TermInterface;
  */
 class AdIntegrationLookup implements AdIntegrationLookupInterface {
 
-  const SUPPORTEDENTITYPARAMETERS = ['node', 'taxonomy_term'];
+  const SUPPORTED_ENTITY_PARAMETERS = ['node', 'taxonomy_term'];
 
   protected $currentRouteMatch;
   protected $config;
@@ -73,7 +73,7 @@ class AdIntegrationLookup implements AdIntegrationLookupInterface {
   public function byRoute($name, RouteMatchInterface $routeMatch, $termsOnly = FALSE) {
     $entity = NULL;
 
-    foreach (static::SUPPORTEDENTITYPARAMETERS as $parameter) {
+    foreach (static::SUPPORTED_ENTITY_PARAMETERS as $parameter) {
       if ($entity = $routeMatch->getParameter($parameter)) {
         if (is_numeric($entity)) {
           $entity = Node::load($entity);
