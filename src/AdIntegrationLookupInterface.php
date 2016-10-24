@@ -32,7 +32,8 @@ interface AdIntegrationLookupInterface {
    * @param string $name
    *   The name of the Ad property to look up.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
-   *   The route matching the entity (node, term) on which to look up properties.
+   *   The route matching the entity (node, term) on which to look up
+   *   properties.
    * @param bool $termsOnly
    *   If set to TRUE, skips lookup on node settings.
    *
