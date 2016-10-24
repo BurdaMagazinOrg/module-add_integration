@@ -150,7 +150,7 @@ class AdIntegrationLookup implements AdIntegrationLookupInterface {
       }
 
       // Check for fallback categories if no ad_integration_setting is found.
-      if (!isset($termOverride) && $fieldType === 'entity_reference' && $fieldDefinition->getSetting('target_type') === 'taxonomy_term') {
+      if ($fieldType === 'entity_reference' && $fieldDefinition->getSetting('target_type') === 'taxonomy_term') {
         $fieldName = $fieldDefinition->getName();
         if ($tid = $entity->$fieldName->target_id) {
           if ($term = Term::load($tid)) {
