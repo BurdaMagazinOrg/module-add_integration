@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ad_integration\Tests\Kernel;
+namespace Drupal\Tests\ad_integration\Kernel;
 
 use Drupal\ad_integration\AdIntegrationLookup;
 use Drupal\Component\Utility\Unicode;
