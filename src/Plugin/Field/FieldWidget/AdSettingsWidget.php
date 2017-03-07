@@ -113,6 +113,7 @@ class AdSettingsWidget extends WidgetBase implements ContainerFactoryPluginInter
     $element[$value_element_name]['#description'] = t('Comma separated ad keywords');
     $element[$value_element_name]['#default_value'] = isset($items[$delta]->$value_element_name) ? $items[$delta]->$value_element_name : NULL;
     $element[$value_element_name]['#required'] = FALSE;
+    $element[$value_element_name]['#maxlength'] = 256;
 
     return $element;
   }
