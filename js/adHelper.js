@@ -18,7 +18,7 @@ function getDeviceType() {
     if (window.innerWidth <= Breakpoints[DeviceMapping.desktop]) {
         adIntegrationDeviceType = 'tablet';
     }
-    if (!deviceType) {
+    if (!adIntegrationDeviceType) {
         adIntegrationDeviceType = 'desktop';
     }
 
