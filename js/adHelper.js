@@ -15,7 +15,7 @@ function getDeviceType() {
         adIntegrationDeviceType = 'smartphone';
     }
 
-    if (window.innerWidth <= Breakpoints[DeviceMapping.desktop]) {
+    if (compareWidth <= Breakpoints[DeviceMapping.desktop]) {
         adIntegrationDeviceType = 'tablet';
     }
     if (!adIntegrationDeviceType) {
