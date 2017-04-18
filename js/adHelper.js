@@ -2,21 +2,27 @@
  * @file
  */
 
+var adIntegrationDeviceType;
 function getDeviceType() {
-  'use strict';
+    if (adIntegrationDeviceType) {
+        return adIntegrationDeviceType;
+    }
+    var Breakpoints = window.breakpointSettings.Breakpoints;
+    var DeviceMapping = window.breakpointSettings.DeviceMapping;
+    var compareWidth = window.innerWidth;
 
-  var Breakpoints = window.breakpointSettings.Breakpoints;
-  var DeviceMapping = window.breakpointSettings.DeviceMapping;
+    if (compareWidth <= Breakpoints[DeviceMapping.tablet]) {
+        adIntegrationDeviceType = 'smartphone';
+    }
 
-  if (window.innerWidth <= Breakpoints[DeviceMapping.tablet]) {
-    return 'smartphone';
-  }
+    if (window.innerWidth <= Breakpoints[DeviceMapping.desktop]) {
+        adIntegrationDeviceType = 'tablet';
+    }
+    if (!deviceType) {
+        adIntegrationDeviceType = 'desktop';
+    }
 
-  if (window.innerWidth <= Breakpoints[DeviceMapping.desktop]) {
-    return 'tablet';
-  }
-
-  return 'desktop';
+    return adIntegrationDeviceType;
 }
 
 window.deviceIsMobile = function () {
