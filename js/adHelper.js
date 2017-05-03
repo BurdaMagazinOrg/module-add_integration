@@ -2,11 +2,7 @@
  * @file
  */
 
-var adIntegrationDeviceType;
 function getDeviceType() {
-    if (adIntegrationDeviceType) {
-        return adIntegrationDeviceType;
-    }
     var Breakpoints = window.breakpointSettings.Breakpoints;
     var DeviceMapping = window.breakpointSettings.DeviceMapping;
     var compareWidth = window.innerWidth;
