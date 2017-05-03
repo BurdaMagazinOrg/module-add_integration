@@ -3,20 +3,23 @@
  */
 
 function getDeviceType() {
-  'use strict';
+    'use strict';
 
-  var Breakpoints = window.breakpointSettings.Breakpoints;
-  var DeviceMapping = window.breakpointSettings.DeviceMapping;
+    var Breakpoints = window.breakpointSettings.Breakpoints;
+    var DeviceMapping = window.breakpointSettings.DeviceMapping;
+    var compareWidth = window.innerWidth;
+    var  adIntegrationDeviceType = 'desktop';
 
-  if (window.innerWidth <= Breakpoints[DeviceMapping.tablet]) {
-    return 'smartphone';
-  }
+    if (compareWidth <= Breakpoints[DeviceMapping.tablet]) {
+        adIntegrationDeviceType = 'smartphone';
+    }
 
-  if (window.innerWidth <= Breakpoints[DeviceMapping.desktop]) {
-    return 'tablet';
-  }
+    if (compareWidth <= Breakpoints[DeviceMapping.desktop]) {
+        adIntegrationDeviceType = 'tablet';
+    }
 
-  return 'desktop';
+
+    return adIntegrationDeviceType;
 }
 
 window.deviceIsMobile = function () {
