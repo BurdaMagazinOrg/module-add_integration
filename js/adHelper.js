@@ -3,9 +3,12 @@
  */
 
 function getDeviceType() {
+    'use strict';
+
     var Breakpoints = window.breakpointSettings.Breakpoints;
     var DeviceMapping = window.breakpointSettings.DeviceMapping;
     var compareWidth = window.innerWidth;
+    var  adIntegrationDeviceType = 'desktop';
 
     if (compareWidth <= Breakpoints[DeviceMapping.tablet]) {
         adIntegrationDeviceType = 'smartphone';
@@ -14,9 +17,7 @@ function getDeviceType() {
     if (compareWidth <= Breakpoints[DeviceMapping.desktop]) {
         adIntegrationDeviceType = 'tablet';
     }
-    if (!adIntegrationDeviceType) {
-        adIntegrationDeviceType = 'desktop';
-    }
+
 
     return adIntegrationDeviceType;
 }
